@@ -21,18 +21,31 @@ class ViewController: UIViewController {
         // 方法1：OC 的方式
         // 细节1 var,weak只能修饰var，不能修饰let
         // 'weak' must be a mutable variable, because it may change at runtime，解释：weak 可能会被在运行时修改 -> 指向的对象一旦被释放，会被自动设置为 nil
-        weak var weakSelf = self
-        loadData {
-            // 细节2 
-            // 解包有两种方式
-            // ? 可选解包 - 如果self 已经被释放，不会向对象发送getter的消息，更加安全
-            // ! 强行解包 - 如果self 已经被释放，强行解包会导致崩溃
-            /*
-             weakSelf?.view as Any - 只是单纯的发送消息，没有计算
-             强行解包，因为需要计算，可选项不能直接参与到计算
-             */
-            print(weakSelf?.view as Any)
+//        weak var weakSelf = self
+//        loadData {
+//            // 细节2 
+//            // 解包有两种方式
+//            // ? 可选解包 - 如果self 已经被释放，不会向对象发送getter的消息，更加安全
+//            // ! 强行解包 - 如果self 已经被释放，强行解包会导致崩溃
+//            /*
+//             weakSelf?.view as Any - 只是单纯的发送消息，没有计算
+//             强行解包，因为需要计算，可选项不能直接参与到计算
+//             */
+//            print(weakSelf?.view as Any)
+//        }
+        
+        // 方法2 - swift 的推荐方法
+        // [weak self] 表示 {} 中的所有self都是弱引用，需要注意解包
+        loadData { [weak self] in
+            print(self?.view as Any)
         }
+        
+        // 方法3 - swift 的另外方法
+        // [unowned self] 表示 {} 中的所有self 都是assign 的，不会强引用，但是，如果对象释放，指针不会变化
+        // 如果对象被释放，继续调用，就会出现野指针的问题
+//        loadData { [unowned self] in
+//            print(self.view)
+//        }
     }
 
     override func didReceiveMemoryWarning() {
