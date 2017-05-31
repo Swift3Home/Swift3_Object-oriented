@@ -12,6 +12,7 @@
 		7E47CF3B1EDEA459005286C3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E47CF391EDEA459005286C3 /* Main.storyboard */; };
 		7E47CF3D1EDEA459005286C3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7E47CF3C1EDEA459005286C3 /* Assets.xcassets */; };
 		7E47CF401EDEA459005286C3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E47CF3E1EDEA459005286C3 /* LaunchScreen.storyboard */; };
+		7E47CF4A1EDF0FA2005286C3 /* OCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E47CF491EDF0FA2005286C3 /* OCViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,9 @@
 		7E47CF3C1EDEA459005286C3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7E47CF3F1EDEA459005286C3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7E47CF411EDEA459005286C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7E47CF471EDF0FA1005286C3 /* 007-解除循环引用-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "007-解除循环引用-Bridging-Header.h"; sourceTree = "<group>"; };
+		7E47CF481EDF0FA2005286C3 /* OCViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCViewController.h; sourceTree = "<group>"; };
+		7E47CF491EDF0FA2005286C3 /* OCViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +64,9 @@
 				7E47CF3C1EDEA459005286C3 /* Assets.xcassets */,
 				7E47CF3E1EDEA459005286C3 /* LaunchScreen.storyboard */,
 				7E47CF411EDEA459005286C3 /* Info.plist */,
+				7E47CF481EDF0FA2005286C3 /* OCViewController.h */,
+				7E47CF491EDF0FA2005286C3 /* OCViewController.m */,
+				7E47CF471EDF0FA1005286C3 /* 007-解除循环引用-Bridging-Header.h */,
 			);
 			path = "007-解除循环引用";
 			sourceTree = "<group>";
@@ -97,6 +104,7 @@
 					7E47CF311EDEA459005286C3 = {
 						CreatedOnToolsVersion = 8.3.2;
 						DevelopmentTeam = 68QKWWUHPW;
+						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -139,6 +147,7 @@
 			files = (
 				7E47CF381EDEA459005286C3 /* ViewController.swift in Sources */,
 				7E47CF361EDEA459005286C3 /* AppDelegate.swift in Sources */,
+				7E47CF4A1EDF0FA2005286C3 /* OCViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -263,11 +272,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = 68QKWWUHPW;
 				INFOPLIST_FILE = "007-解除循环引用/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.niwodai.-07-------";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "007-解除循环引用/007-解除循环引用-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -276,11 +288,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = 68QKWWUHPW;
 				INFOPLIST_FILE = "007-解除循环引用/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.niwodai.-07-------";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "007-解除循环引用/007-解除循环引用-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
@@ -304,6 +318,7 @@
 				7E47CF461EDEA459005286C3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

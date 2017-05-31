@@ -36,6 +36,7 @@ class ViewController: UIViewController {
         
         // 方法2 - swift 的推荐方法
         // [weak self] 表示 {} 中的所有self都是弱引用，需要注意解包
+        // OC __weak
         loadData { [weak self] in
             print(self?.view as Any)
         }
@@ -43,6 +44,7 @@ class ViewController: UIViewController {
         // 方法3 - swift 的另外方法
         // [unowned self] 表示 {} 中的所有self 都是assign 的，不会强引用，但是，如果对象释放，指针不会变化
         // 如果对象被释放，继续调用，就会出现野指针的问题
+        // OC __unsafe_unretained
 //        loadData { [unowned self] in
 //            print(self.view)
 //        }
