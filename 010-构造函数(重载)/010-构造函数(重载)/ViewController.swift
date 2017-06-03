@@ -21,7 +21,7 @@ class ViewController: UIViewController {
         // () -> alloc / init
         // Swift 中对应的一个函数， init() 构造函数
         // 作用：给成员变量分配空间，初始化成员变量
-        let p = Person()
+        let p = Person(name: "老王")
         print(p.name)
         
 //        let s = Student()
