@@ -33,7 +33,8 @@ class Person: NSObject {
     
     // - 如果是 private 属性，使用 KVC 设置的时候，同样无法设置
     // - 如果设置成 private 属性/方法，禁止外部访问的
-    private var title: String?
+    //private var title: String?
+    var title: String?
     
     // 重载构造函数，使用字典为本类设置初始值
     init(dict: [String: AnyObject]) {
@@ -46,6 +47,10 @@ class Person: NSObject {
         // KVC 的方法，是 OC 的方法，在运行时给对象发送消息**
         // ***要求对象已经实例化完成
         setValuesForKeys(dict)
-        
+    }
+    
+    // 重写父类的方法
+    override func setValue(_ value: Any?, forUndefinedKey key: String) {
+        // 没有调用 super，将父类的代码实现完全覆盖，不会崩溃
     }
 }
