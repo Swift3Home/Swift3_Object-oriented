@@ -44,14 +44,12 @@ class ViewController: UIViewController {
     
     func setupUI() -> () {
         // 1.两个 UITextField
-        let tf1 = UITextField(frame: CGRect(x: 20, y: 20, width: 100, height: 30))
-        tf1.borderStyle = .roundedRect
-        tf1.text = "0"
+        let tf1 = UITextField(frame: CGRect(x: 20, y: 20, width: 100, height: 30),
+                              placeholder: "0")
         view.addSubview(tf1)
         
-        let tf2 = UITextField(frame: CGRect(x: 140, y: 20, width: 100, height: 30))
-        tf2.borderStyle = .roundedRect
-        tf2.text = "0"
+        let tf2 = UITextField(frame: CGRect(x: 140, y: 20, width: 100, height: 30),
+                              placeholder: "0")
         view.addSubview(tf2)
         
         // 记录属性
@@ -75,11 +73,9 @@ class ViewController: UIViewController {
         view.addSubview(lbl3)
         
         resultLabel = lbl3
+        
         // 3.一个 UIButton
-        let btn = UIButton()
-        btn.setTitle("计算", for: .normal)
-        btn.setTitleColor(UIColor.black, for: .normal)
-        btn.sizeToFit()
+        let btn = UIButton(title: "计算")
         btn.center = view.center
         view.addSubview(btn)
         
