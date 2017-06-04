@@ -36,4 +36,18 @@ class Person: NSObject {
         // 执行至此 self 才允许被访问，才能够访问到对象的属性
         self.name = name
     }
+    
+    // 没有 func -> 不让调用
+    // 没有 () -> 不让重载/重写/不允许带参数
+    // 在对象被销毁前自动调用
+    // 类似于 OC 的 dealloc
+    deinit {
+        // 1. 跟踪对象的销毁
+        // 2. 必须释放的
+        /*
+            - 通知，不释放不会崩溃，但是会泄露
+            - KVO，不释放会崩溃
+            - NSTimer / CADisplayLink
+         */
+    }
 }
