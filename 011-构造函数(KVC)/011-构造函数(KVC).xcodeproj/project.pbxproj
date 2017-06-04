@@ -58,11 +58,11 @@
 			children = (
 				7EB44C131EE2791F00855623 /* AppDelegate.swift */,
 				7EB44C151EE2791F00855623 /* ViewController.swift */,
+				7EB44C251EE2794C00855623 /* Person.swift */,
 				7EB44C171EE2791F00855623 /* Main.storyboard */,
 				7EB44C1A1EE2791F00855623 /* Assets.xcassets */,
 				7EB44C1C1EE2791F00855623 /* LaunchScreen.storyboard */,
 				7EB44C1F1EE2791F00855623 /* Info.plist */,
-				7EB44C251EE2794C00855623 /* Person.swift */,
 			);
 			path = "011-构造函数(KVC)";
 			sourceTree = "<group>";

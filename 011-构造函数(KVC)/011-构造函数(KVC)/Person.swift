@@ -12,7 +12,10 @@ import UIKit
  1. 定义模型属性的时候，如果是对象，通常都是可选的
     - 在需要的时候创建
     - 避免写构造函数，可以简化代码
- 2. 使用 KVC 方法之前，应该调用 super.init 保证对象实例化完成
+ 2. 如果是基本数据类型，不能设置成可选的，而且要设置初始值，否则 KVC 会崩溃
+ 3. 如果需要使用KVC设置数值，属性不能是private的
+ 4. 使用 KVC 方法之前，应该调用 super.init 保证对象实例化完成
+ 
  */
 class Person: NSObject {
 
@@ -21,6 +24,16 @@ class Person: NSObject {
     // 因为在手机开发，内存很宝贵，有些属性并不是一定需要分配空间的
     // 延迟加载，在需要的时候再创建
     var name: String?
+    
+    // 给基本数据类型初始化
+    // - 使用 KVC 会提示无法找到 age 的KEY
+    // - 原因：Int 是一个基本数据类型的结构体，OC 中只有基本数据类型
+    //var age: Int?
+    var age: Int = 0
+    
+    // - 如果是 private 属性，使用 KVC 设置的时候，同样无法设置
+    // - 如果设置成 private 属性/方法，禁止外部访问的
+    private var title: String?
     
     // 重载构造函数，使用字典为本类设置初始值
     init(dict: [String: AnyObject]) {
