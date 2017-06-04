@@ -1,6 +1,6 @@
 //
 //  ViewController.swift
-//  013-加载百度
+//  014-便利构造函数
 //
 //  Created by lichuanjun on 2017/6/4.
 //  Copyright © 2017年 lichuanjun. All rights reserved.
@@ -13,6 +13,11 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        let p = Person(name: "老王", age: 10)
+        print(p?.name)
+        
+/*
         // URL 的构造函数可以返回nil
         // 构造函数就是实例化对象的
         // init?(string: String) -> 构造函数可以返回 nil
@@ -24,10 +29,10 @@ class ViewController: UIViewController {
         // - 优点：如果不关心的值，可以直接`_`忽略
         URLSession.shared.dataTask(with: url!) { (data, _, error) in
             
-//            if(error != nil) {
-//                print("网络请求失败")
-//                return
-//            }
+            //            if(error != nil) {
+            //                print("网络请求失败")
+            //                return
+            //            }
             
             guard let data = data else {
                 print("网络请求失败 \(String(describing: error))")
@@ -40,7 +45,9 @@ class ViewController: UIViewController {
             
             print(html ?? "")
             
-        }.resume()
+            }.resume()
+*/
+        
     }
 
     override func didReceiveMemoryWarning() {
