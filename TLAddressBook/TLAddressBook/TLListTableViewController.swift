@@ -10,14 +10,20 @@ import UIKit
 
 class TLListTableViewController: UITableViewController {
 
+    // 联系人数组
+    var personList = [TLPerson]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        loadData { (list) in
+            print(list)
+            // `拼接`数组，闭包中定义好的代码在需要的时候执行，需要self. 指定语境
+            self.personList += list
+            
+            // 刷新表格
+            self.tableView.reloadData()
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -25,6 +31,32 @@ class TLListTableViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    // 模拟异步，利用闭包回调
+    private func loadData(completion: @escaping (_ list: [TLPerson]) -> ()) -> () {
+        print("正在努力加载中...")
+        
+        DispatchQueue.global().async {
+            Thread.sleep(forTimeInterval: 1)
+            
+            var arrayPerson = [TLPerson]()
+            for i in 0..<20 {
+                let p = TLPerson()
+                p.name = "zhangsan \(i)"
+                p.phone = "1860" + String(format: "%06d", arc4random_uniform(1000000))
+                p.title = "boss"
+                
+                arrayPerson.append(p)
+            }
+            
+            // 主线程回调
+            DispatchQueue.main.async (execute: {
+                // 回调，执行闭包
+                completion(arrayPerson)
+            })
+        }
+    }
+    
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
