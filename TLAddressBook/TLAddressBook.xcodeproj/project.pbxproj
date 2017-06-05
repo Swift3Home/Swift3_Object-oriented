@@ -13,6 +13,7 @@
 		7EB44D5E1EE5966B00855623 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7EB44D5C1EE5966B00855623 /* LaunchScreen.storyboard */; };
 		7EB44D661EE59F7900855623 /* TLListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB44D651EE59F7900855623 /* TLListTableViewController.swift */; };
 		7EB44D681EE5A01400855623 /* TLDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB44D671EE5A01400855623 /* TLDetailTableViewController.swift */; };
+		7EB44D6A1EE5A1E700855623 /* TLPerson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB44D691EE5A1E700855623 /* TLPerson.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		7EB44D5F1EE5966B00855623 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7EB44D651EE59F7900855623 /* TLListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TLListTableViewController.swift; sourceTree = "<group>"; };
 		7EB44D671EE5A01400855623 /* TLDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TLDetailTableViewController.swift; sourceTree = "<group>"; };
+		7EB44D691EE5A1E700855623 /* TLPerson.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TLPerson.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 				7EB44D531EE5966B00855623 /* AppDelegate.swift */,
 				7EB44D651EE59F7900855623 /* TLListTableViewController.swift */,
 				7EB44D671EE5A01400855623 /* TLDetailTableViewController.swift */,
+				7EB44D691EE5A1E700855623 /* TLPerson.swift */,
 				7EB44D571EE5966B00855623 /* Main.storyboard */,
 				7EB44D5A1EE5966B00855623 /* Assets.xcassets */,
 				7EB44D5C1EE5966B00855623 /* LaunchScreen.storyboard */,
@@ -140,6 +143,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7EB44D6A1EE5A1E700855623 /* TLPerson.swift in Sources */,
 				7EB44D541EE5966B00855623 /* AppDelegate.swift in Sources */,
 				7EB44D681EE5A01400855623 /* TLDetailTableViewController.swift in Sources */,
 				7EB44D661EE59F7900855623 /* TLListTableViewController.swift in Sources */,
