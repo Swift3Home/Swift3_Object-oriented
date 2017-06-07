@@ -18,7 +18,7 @@ class TLLabel: UILabel {
         setupUI()
     }
     
-    // initWithCoder -> 是使用 xib / Stroyboard 开发的入口
+    // initWithCoder -> 是使用 xib / Storyboard 开发的入口
     // 提示：所有UIView 及子类在开发是，以保证两个构造函数
     // 必须实现 initWithCoder 函数，以保证两个构造函数
     // 方法的添加 Xcode 有只能提示
