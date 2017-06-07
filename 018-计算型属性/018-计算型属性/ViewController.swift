@@ -19,6 +19,12 @@ class ViewController: UIViewController {
         p.name = "老王"
         // getter
         print(p.name ?? "")
+        
+        print(p.title)
+        // Cannot assign to property: 'title' is a get-only property
+//        p.title = ""
+        
+        print(p.title2)
     }
 
     override func didReceiveMemoryWarning() {
