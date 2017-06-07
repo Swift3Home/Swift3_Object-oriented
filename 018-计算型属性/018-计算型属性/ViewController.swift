@@ -10,10 +10,12 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    private lazy var p = TLPerson()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let p = TLPerson()
+//        let p = TLPerson()
         
         // setter
         p.name = "老王"
@@ -22,16 +24,21 @@ class ViewController: UIViewController {
         
         print(p.title)
         // Cannot assign to property: 'title' is a get-only property
-//        p.title = ""
+        // 不能给 get-only 属性设置值
+//        p.title = "XXX"
         
+        // 不允许修改只读属性
+//        p.title2 = "XXX"
         print(p.title2)
+        
+        print(p.title3)
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        p.name = "花花"
+        print(p.title2)
+        print(p.title3)
     }
-
 
 }
 
