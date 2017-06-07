@@ -17,7 +17,7 @@ class TLListTableViewController: UITableViewController {
         super.viewDidLoad()
 
         loadData { (list) in
-            print(list)
+            // print(list)
             // `拼接`数组，闭包中定义好的代码在需要的时候执行，需要self. 指定语境
             self.personList += list
             
@@ -36,7 +36,7 @@ class TLListTableViewController: UITableViewController {
         print("正在努力加载中...")
         
         DispatchQueue.global().async {
-            Thread.sleep(forTimeInterval: 1)
+            Thread.sleep(forTimeInterval: 0.5)
             
             var arrayPerson = [TLPerson]()
             for i in 0..<20 {
@@ -52,32 +52,90 @@ class TLListTableViewController: UITableViewController {
             DispatchQueue.main.async (execute: {
                 // 回调，执行闭包
                 completion(arrayPerson)
+                print("加载完成.")
             })
         }
     }
     
+    @IBAction func addNewPerson(_ sender: Any) {
+        // 执行segue 跳转界面
+        performSegue(withIdentifier: "ListToDetail", sender: nil)
+    }
+    
+    
+    // MARK: - 控制器跳转方法
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        // 类型转换 as
+        // Swift 中 String 之外，绝大多数使用as 需要 ? / !
+        // as! / as? 直接根据前面的返回值来决定
+        // 注意：if let / guard let 判空语句，一律使用 as?
+        let vc = segue.destination as! TLDetailTableViewController
+        
+        // 设置选中的 person, indexPath
+        if let indexPath = sender as? IndexPath {
+            // indexPath 一定有值
+            vc.person = personList[indexPath.row]
+            
+            // 设置编辑完成的闭包
+            vc.completionCallBack = {
+                // 刷新指定行
+                self.tableView.reloadRows(at: [indexPath], with: .automatic)
+            }
+        } else {
+            // 新建个人记录
+            vc.completionCallBack = { [weak vc] in
+                // 1. 获取明细控制器的 person
+                guard let p = vc?.person else {
+                    print("person 为nil")
+                    return
+                }
+                
+                // 2. 判断person的属性值是否为空串
+                if p.name == "" || p.phone == "" || p.title == "" {
+                    print("person 部分属性为空")
+                    return
+                }
+                
+                // 3. 插入到数据顶部
+                self.personList.insert(p, at: 0)
+                
+                // 4. 刷新表格
+                self.tableView.reloadData()
+            }
+        }
+    }
+    
+    // MARK: - 代理方法
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        // 执行segue
+        performSegue(withIdentifier: "ListToDetail", sender: indexPath)
+    }
     
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return personList.count
     }
 
-    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "listCellId", for: indexPath)
 
-        // Configure the cell...
+        cell.textLabel?.text = personList[indexPath.row].name
+        cell.detailTextLabel?.text = personList[indexPath.row].phone
 
         return cell
     }
-    */
+    
 
     /*
     // Override to support conditional editing of the table view.

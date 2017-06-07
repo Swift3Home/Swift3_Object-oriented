@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="9Hp-7n-qRm" detailTextLabel="ET5-6q-c1o" style="IBUITableViewCellStyleSubtitle" id="OyF-rI-iuE">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="cellId" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="listCellId" textLabel="9Hp-7n-qRm" detailTextLabel="ET5-6q-c1o" style="IBUITableViewCellStyleSubtitle" id="OyF-rI-iuE">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="OyF-rI-iuE" id="gd5-9p-DIi">
@@ -49,7 +49,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="联系人列表" id="6wO-Bs-u7G">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="1Fw-hy-Ca4"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="1Fw-hy-Ca4">
+                            <connections>
+                                <action selector="addNewPerson:" destination="PK4-oX-o2S" id="qB0-VA-eWa"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <segue destination="ck5-Z1-B8p" kind="show" identifier="ListToDetail" id="lbV-zK-xOk"/>
@@ -57,13 +61,13 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="viQ-TS-Lk9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="283" y="115"/>
+            <point key="canvasLocation" x="-36" y="115"/>
         </scene>
         <!--明细-->
         <scene sceneID="7ts-KZ-g4k">
             <objects>
                 <tableViewController id="ck5-Z1-B8p" customClass="TLDetailTableViewController" customModule="TLAddressBook" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="ZLg-5K-BE2">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="ZLg-5K-BE2">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -82,6 +86,9 @@
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <action selector="textChange:" destination="ck5-Z1-B8p" eventType="editingChanged" id="WNq-Zo-7dz"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -105,6 +112,9 @@
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
+                                                    <connections>
+                                                        <action selector="textChange:" destination="ck5-Z1-B8p" eventType="editingDidEnd" id="ZCk-d4-Fi3"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -126,6 +136,9 @@
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <action selector="textChange:" destination="ck5-Z1-B8p" eventType="editingDidEnd" id="3Aj-cg-3YL"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -144,12 +157,21 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="明细" id="fAm-js-Ffc">
-                        <barButtonItem key="rightBarButtonItem" title="保存" id="bQH-Cg-mho"/>
+                        <barButtonItem key="rightBarButtonItem" title="保存" id="bQH-Cg-mho">
+                            <connections>
+                                <action selector="savePerson:" destination="ck5-Z1-B8p" id="apG-JO-M8h"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="nameText" destination="UPY-HW-qHB" id="Jon-i2-3I8"/>
+                        <outlet property="phoneText" destination="Ynw-Jt-nSY" id="e1E-YT-Odm"/>
+                        <outlet property="titleText" destination="vTP-Hu-vsj" id="prn-5q-SVo"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Yzl-9P-7MA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1213.5999999999999" y="114.69265367316342"/>
+            <point key="canvasLocation" x="713" y="115"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="CgO-SB-Woz">
@@ -165,7 +187,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6jE-Fe-9su" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-672" y="115"/>
+            <point key="canvasLocation" x="-758" y="115"/>
         </scene>
     </scenes>
 </document>
