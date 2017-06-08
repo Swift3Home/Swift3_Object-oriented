@@ -38,7 +38,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        print(Bundle.main.infoDictionary)
         
         // Any?
-        let ns = Bundle.main.infoDictionary?["CFBundleName"] as? String ?? ""
+//        let ns = Bundle.main.infoDictionary?["CFBundleName"] as? String ?? ""
+        let ns = Bundle.main.namespace()
         
         // 2. 设置 根控制器，需要添加命令空间 -> 默认就是`项目名称(最好不要有数字和特殊符号)`
         // 2.1 反射机制
