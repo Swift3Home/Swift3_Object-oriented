@@ -33,10 +33,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow()
         window?.backgroundColor = UIColor.white
         
+        // 输出 info.plist 的内容
+        // [String : Any]?
+//        print(Bundle.main.infoDictionary)
+        
+        // Any?
+        let ns = Bundle.main.infoDictionary?["CFBundleName"] as? String ?? ""
         
         // 2. 设置 根控制器，需要添加命令空间 -> 默认就是`项目名称(最好不要有数字和特殊符号)`
         // 2.1 反射机制
-        let clsName = "TLReflection.ViewController"
+        let clsName = ns + "." + "ViewController"
         // AnyClass? -> 视图控制器的类型
         let cls = NSClassFromString(clsName) as? UIViewController.Type
         
